@@ -29,8 +29,7 @@ jobs:
           --volume "${PWD}/artifacts:/artifacts"
         install: |
           apt update -y
-          apt install default-jdk
-          apt install maven
+          apt install default-jdk maven -y
         run: |
           mvn -B -am -pl plugins/linux/ clean compile
           mv ./plugins/linux/target/natives/*.so /artifacts/
