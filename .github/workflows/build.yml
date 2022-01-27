@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: '8'
         distribution: 'temurin'
-    - uses: uraimo/run-on-arch-action@v2
+    - uses: uraimo/run-on-arch-action@v2.1.1
       name: Build with aarch64
       id: build
       with:
