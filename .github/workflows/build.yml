@@ -16,11 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 8
-      uses: actions/setup-java@v2
-      with:
-        java-version: '8'
-        distribution: 'temurin'
     - uses: uraimo/run-on-arch-action@v2.1.1
       name: Build with aarch64
       id: build
@@ -33,6 +28,8 @@ jobs:
         dockerRunArgs: |
           --volume "${PWD}/artifacts:/artifacts"
         install: |
+          apt update -y
+          apt install default-jdk
           apt install maven
         run: |
           mvn -B -am -pl plugins/linux/ clean compile
